@@ -13,7 +13,7 @@ module app.productList {
         
         static $inject = ["dataAccessService"];
         
-        constructor(private dataAccessService: app.common.IDataAccessService) {
+        constructor(private dataAccessService: app.common.DataAccessService) {
             this.title = "Product list";
             this.showImage = false;
             this.products = [];
