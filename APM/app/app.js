@@ -1,4 +1,7 @@
 var app;
 (function (app) {
-    angular.module("productManagement", []);
+    angular.module("productManagement", [
+        "productResourceMock",
+        "common.services",
+        ]);
 })(app || (app = {}));
