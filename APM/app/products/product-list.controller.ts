@@ -14,22 +14,20 @@ module app.productList {
         static $inject = ["dataAccessService"];
         
         constructor(private dataAccessService: app.common.DataAccessService) {
-            this.title = "Product list";
-            this.showImage = false;
-            this.products = [];
+            this.title = "Product List"
+            this.showImage = true;
+            this.products =  [];
             
             var productResource = dataAccessService.getProductResource();
-            productResource.query((data: app.domain.IProduct[]) => {
+            productResource.query((data:app.domain.IProduct[]) => {
                 this.products = data;
             });
         }
         toggleImage(): void {
             this.showImage = !this.showImage;
         }
-
-    }
-
-    angular.module("productManagement", ['common.services']);
-    angular.module("productManagement").controller('ProductListCtrl', ProductListCtrl);
-}
-
+    };
+    angular
+        .module("productManagement")
+        .controller("ProductListCtrl", ProductListCtrl);
+};

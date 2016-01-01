@@ -6,8 +6,8 @@ var app;
             function ProductListCtrl(dataAccessService) {
                 var _this = this;
                 this.dataAccessService = dataAccessService;
-                this.title = "Product list";
-                this.showImage = false;
+                this.title = "Product List";
+                this.showImage = true;
                 this.products = [];
                 var productResource = dataAccessService.getProductResource();
                 productResource.query(function (data) {
@@ -20,7 +20,10 @@ var app;
             ProductListCtrl.$inject = ["dataAccessService"];
             return ProductListCtrl;
         })();
-        angular.module("productManagement", ['common.services']);
-        angular.module("productManagement").controller('ProductListCtrl', ProductListCtrl);
+        ;
+        angular
+            .module("productManagement")
+            .controller("ProductListCtrl", ProductListCtrl);
     })(productList = app.productList || (app.productList = {}));
 })(app || (app = {}));
+;
