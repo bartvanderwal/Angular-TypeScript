@@ -1,11 +1,26 @@
-module app.productList {
+namespace app.productDetail {
     interface IProductDetailModel {
+        title: string;
+        product: app.domain.IProduct;
     }
 
+    interface IProductParams extends ng.route.IRouteParamsService {
+        productId: number;
+    }
     class ProductDetailCtrl implements IProductDetailModel {        
-        static $inject = ["dataAccessService"];
+        title: string;
+        product: app.domain.IProduct
         
-        constructor(private dataAccessService: app.common.DataAccessService) {
+        static $inject = ["$routeParams", "dataAccessService"];
+        constructor(private $routeParams: IProductParams, 
+            private dataAccessService: app.common.DataAccessService) {
+            this.title = "Product detail";
+            
+            var id = $routeParams.productId;
+            var productResource = dataAccessService.getProductResource();
+            productResource.get({ productId: id}, (data: app.domain.IProduct) => {
+                this.product = data;
+            })
         }
     };
     angular

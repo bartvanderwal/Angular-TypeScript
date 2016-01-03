@@ -3,16 +3,17 @@ namespace app {
     
     routeConfig.$inject = ["$routeProvider"];
     function routeConfig($routeProvider: ng.route.IRouteProvider): void {
+        $routeProvider.caseInsensitiveMatch = true;
         $routeProvider
-        .when("/productList", {
+        .when("/productlist", {
             templateUrl: "/app/products/productListView.html",
             controller: "ProductListCtrl as vm"
             })
-        .when("/productDetail/:productId", {
+        .when("/productdetail/:productId", {
             templateUrl: "/app/products/productDetailView.html",
             controller: "ProductDetailCtrl as vm"
         })
-        .otherwise("/productList");
+        .otherwise("/productlist");
     }
 }
 

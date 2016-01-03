@@ -3,15 +3,16 @@ var app;
     angular.module("productManagement").config(routeConfig);
     routeConfig.$inject = ["$routeProvider"];
     function routeConfig($routeProvider) {
+        $routeProvider.caseInsensitiveMatch = true;
         $routeProvider
-            .when("/productList", {
+            .when("/productlist", {
             templateUrl: "/app/products/productListView.html",
             controller: "ProductListCtrl as vm"
         })
-            .when("/productDetail/:productId", {
+            .when("/productdetail/:productId", {
             templateUrl: "/app/products/productDetailView.html",
             controller: "ProductDetailCtrl as vm"
         })
-            .otherwise("/productList");
+            .otherwise("/productlist");
     }
 })(app || (app = {}));

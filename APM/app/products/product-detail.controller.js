@@ -1,18 +1,26 @@
 var app;
 (function (app) {
-    var productList;
-    (function (productList) {
+    var productDetail;
+    (function (productDetail) {
         var ProductDetailCtrl = (function () {
-            function ProductDetailCtrl(dataAccessService) {
+            function ProductDetailCtrl($routeParams, dataAccessService) {
+                var _this = this;
+                this.$routeParams = $routeParams;
                 this.dataAccessService = dataAccessService;
+                this.title = "Product detail";
+                var id = $routeParams.productId;
+                var productResource = dataAccessService.getProductResource();
+                productResource.get({ productId: id }, function (data) {
+                    _this.product = data;
+                });
             }
-            ProductDetailCtrl.$inject = ["dataAccessService"];
+            ProductDetailCtrl.$inject = ["$routeParams", "dataAccessService"];
             return ProductDetailCtrl;
         })();
         ;
         angular
             .module("productManagement")
             .controller("ProductDetailCtrl", ProductDetailCtrl);
-    })(productList = app.productList || (app.productList = {}));
+    })(productDetail = app.productDetail || (app.productDetail = {}));
 })(app || (app = {}));
 ;
