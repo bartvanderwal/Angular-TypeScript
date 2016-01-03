@@ -1,5 +1,5 @@
 module app {
     angular.module("productManagement", 
-    ["common.services", "productResourceMock"]);
+    ["common.services", "productResourceMock", "ngRoute"]);
 }
 
