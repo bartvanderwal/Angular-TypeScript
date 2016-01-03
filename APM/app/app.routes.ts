@@ -4,12 +4,12 @@ namespace app {
     routeConfig.$inject = ["$routeProvider"];
     function routeConfig($routeProvider: ng.route.IRouteProvider): void {
         $routeProvider
-        .when("/productlist", {
-            templateUrl:"/app/products/productListView.html",
+        .when("/productList", {
+            templateUrl: "/app/products/productListView.html",
             controller: "ProductListCtrl as vm"
-        })
-        .when("/productdetail/:productId", {
-            templateUrl:"/app/products/productDetailView.html",
+            })
+        .when("/productDetail/:productId", {
+            templateUrl: "/app/products/productDetailView.html",
             controller: "ProductDetailCtrl as vm"
         })
         .otherwise("/productList");
